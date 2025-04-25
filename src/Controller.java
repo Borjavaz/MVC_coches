@@ -23,5 +23,9 @@ public class Controller {
         } else {
             System.out.println("Error");
         } ;
+
+        miModel.aumentarVelocidad(10,"SBC 1234");
+        miModel.disminuirVelocidad(5,"SBC 1234");
+        System.out.println(miModel.getVelocidad("SBC 1234"));
     }
 }
