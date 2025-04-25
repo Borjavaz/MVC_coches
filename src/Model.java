@@ -21,7 +21,7 @@ public class Model {
     /**
      * Busca coche segun matricula
      * @param matricula a buscar
-     * @return chche o null si no existe
+     * @return coche o null si no existe
      */
     public Coche getCoche(String matricula){
         Coche aux = null;
@@ -55,4 +55,50 @@ public class Model {
     public int getVelocidad(String matricula) {
         return getCoche(matricula).velocidad;
     }
+
+    public static void aumentarVelocidad(int velocidad, String matricula) {
+
+        //Declaramos variable coche q inicialmente no apunta a ningun valor
+        Coche coche = null;
+
+        // Buscar el coche en el parking
+        for (Coche c : parking) {
+            if (c.matricula.equals(matricula)) {
+                coche = c;
+                break;
+            }
+        }
+
+        // Si se encontró el coche, aumentar su velocidad
+        if (coche != null) {
+            coche.velocidad += velocidad;
+        }
+    }
+
+    public static void disminuirVelocidad(int velocidad, String matricula) {
+
+        //Declaramos variable coche q inicialmente no apunta a ningun valor
+        Coche coche = null;
+
+        // Buscar el coche en el parking
+        for (Coche c : parking) {
+            if (c.matricula.equals(matricula)) {
+                coche = c;
+                break;
+            }
+        }
+
+        // Si se encuentra el coche, disminuir su velocidad
+        if (coche != null) {
+            coche.velocidad -= velocidad;
+
+            // Evitar que la velocidad sea negativa
+            if (coche.velocidad < 0) {
+                coche.velocidad = 0;
+            }
+        }
+    }
+
+
+
 }
