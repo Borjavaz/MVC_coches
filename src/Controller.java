@@ -1,31 +1,44 @@
-import java.lang.module.ModuleDescriptor;
+import java.util.Scanner;
 
 public class Controller {
-    public static void main(String[] args) {
-        // Instanciamos la vista y el modelo
-        View miView = new View();
-        Model miModel = new Model();
 
-        // Crear tres coches
-        miModel.crearCoche("LaFerrari", "SBC 1234");
-        miModel.crearCoche("Alpine", "HYU 4567");
-        miModel.crearCoche("Aston Martin", "FGH 3333");
+    static Scanner sc = new Scanner(System.in);
+    static View view = new View();
 
-        Coche ferrari = miModel.getCoche("SBC 1234");
-        // modifica la velocidad
-        int nuevaVelocidad = miModel.cambiarVelocidad("SBC 1234", 30);
-
-        // recoje la velocidad y la muestra (tarea de la View)
-        boolean hecho = miView.muestraVelocidad("SBC 1234", miModel.getVelocidad("SBC 1234"));
-
-        if (hecho) {
-            System.out.println("Correcto");
-        } else {
-            System.out.println("Error");
-        } ;
-
-        miModel.aumentarVelocidad(10,"SBC 1234");
-        miModel.disminuirVelocidad(5,"SBC 1234");
-        System.out.println(miModel.getVelocidad("SBC 1234"));
+    public static void inicio() {
+        view.menu();  // Llama al menú de la vista
     }
+
+    public static void crearCoche() {
+        System.out.print("Introduce el modelo: ");
+        String modelo = sc.nextLine();
+
+        System.out.print("Introduce la matrícula: ");
+        String matricula = sc.nextLine();
+
+        Model.crearCoche(modelo, matricula);
+        System.out.println("Coche creado correctamente.");
+    }
+
+    public static void cambiarVelocidad() {
+        System.out.print("Introduce la matrícula del coche: ");
+        String matricula = sc.nextLine();
+
+        Coche coche = Model.getCoche(matricula);
+        if (coche == null) {
+            System.out.println("Coche no encontrado.");
+            return;
+        }
+
+        System.out.print("Introduce la nueva velocidad: ");
+        int velocidad = sc.nextInt();
+        sc.nextLine();
+
+        int nuevaVel = Model.cambiarVelocidad(matricula, velocidad);
+        view.muestraVelocidad(matricula, nuevaVel);
+    }
+    public static void mostrarCoches() {
+        Model.mostrarCoches();
+    }
+
 }
