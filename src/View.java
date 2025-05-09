@@ -16,10 +16,6 @@ public class View {
     }
     public static void menu(){
 
-        //menu de inicio
-        // 1- crear coche
-        // 0- salir
-
         do{
             System.out.println("1- Crear coche");
             System.out.println("2- Cambiar velocidad");
