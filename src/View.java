@@ -15,7 +15,6 @@ public class View {
         return true;
     }
     public static void menu(){
-
         do{
             System.out.println("1- Crear coche");
             System.out.println("2- Cambiar velocidad");

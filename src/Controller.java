@@ -37,6 +37,7 @@ public class Controller {
         int nuevaVel = Model.cambiarVelocidad(matricula, velocidad);
         view.muestraVelocidad(matricula, nuevaVel);
     }
+
     public static void mostrarCoches() {
         Model.mostrarCoches();
     }

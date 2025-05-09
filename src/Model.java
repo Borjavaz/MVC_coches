@@ -5,7 +5,6 @@ import java.util.ArrayList;
  */
 public class Model {
     static ArrayList<Coche> parking = new ArrayList<>();
-
     /**
      * Crea un coche y lo mete en el parking
      * @param modelo del coche
