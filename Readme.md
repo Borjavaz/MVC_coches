@@ -52,20 +52,49 @@ sequenceDiagram
     deactivate View
 ```
 
-El mismo diagrama con los nombres de los métodos
+Diagrama con los metodos y funciones de mi programa
 
 ```mermaid
 sequenceDiagram
-    participant Model
-    participant Controller
+    participant App
     participant View
+    participant Controller
+    participant Model
+
+    App->>View: menu()
+    activate View
+    View->>Controller: crearCoche("Mercedes", "BXK 1234")
+    activate Controller
     Controller->>Model: crearCoche("Mercedes", "BXK 1234")
     activate Model
     Model-->>Controller: Coche
     deactivate Model
+
     Controller->>+View: muestraVelocidad("BXK 1234", velocidad)
     activate View
     View->>-View: System.out.println()
     View-->>Controller: boolean
+    deactivate View
+
+    Controller->>Model: cambiarVelocidad("BXK 1234", 150)
+    activate Model
+    Model-->>Controller: 150
+    deactivate Model
+
+    Controller->>+View: muestraVelocidad("BXK 1234", 150)
+    activate View
+    View->>-View: System.out.println()
+    View-->>Controller: boolean
+    deactivate View
+
+    Controller->>Model: obtenerCoches()
+    activate Model
+    Model-->>Controller: Lista de coches
+    deactivate Model
+
+    Controller->>+View: muestraCoches(Lista de coches)
+    activate View
+    View->>-View: System.out.println()
+    View-->>Controller: boolean(Parking)
     deactivate View
 ```
