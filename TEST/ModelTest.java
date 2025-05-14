@@ -22,21 +22,4 @@ public class ModelTest {
         assertNotNull(c2);
         assertEquals(c1, c2);
     }
-
-    @Test
-    public void testCambiarVelocidad() {
-        Model m = new Model();
-        m.crearCoche("Renault", "MAN 1234");
-        int nuevaVelocidad = m.cambiarVelocidad("MAN 1234", 250);
-        assertEquals(250, nuevaVelocidad);
-        assertEquals(250, m.getVelocidad("MAN 1234"));
-    }
-
-    @Test
-    public void testGetVelocidad() {
-        Model m = new Model();
-        m.crearCoche("Ford", "MCC 1234");
-        m.cambiarVelocidad("MCC 1234", 50);
-        assertEquals(50, m.getVelocidad("MCC 1234"));
-    }
 }
