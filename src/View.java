@@ -72,7 +72,7 @@ public class View {
                             }
                         }
                     } catch (NumberFormatException e) {
-                        mostrarMensaje("Velocidad inválida.");
+                        mostrarMensaje("Velocidad no valida.");
                     }
                     break;
                     case "3":
