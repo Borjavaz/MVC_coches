@@ -59,17 +59,23 @@ public class View {
                     String velocidadInput = pedirDato("Introduce la nueva velocidad: ");
                     try {
                         int velocidad = Integer.parseInt(velocidadInput);
-                        int nuevaVelocidad = Controller.cambiarVelocidad(matricula, velocidad);
-                        if (nuevaVelocidad != -1) {
-                            muestraVelocidad(matricula, nuevaVelocidad);
+
+                        // Comprobar que la velocidad no sea negativa
+                        if (velocidad < 0) {
+                            mostrarMensaje("La velocidad no puede ser negativa.");
                         } else {
-                            mostrarMensaje("Coche no encontrado.");
+                            int nuevaVelocidad = Controller.cambiarVelocidad(matricula, velocidad);
+                            if (nuevaVelocidad != -1) {
+                                muestraVelocidad(matricula, nuevaVelocidad);
+                            } else {
+                                mostrarMensaje("Coche no encontrado.");
+                            }
                         }
                     } catch (NumberFormatException e) {
                         mostrarMensaje("Velocidad inválida.");
                     }
                     break;
-                case "3":
+                    case "3":
                     // Llama al Controller para mostrar todos los coches
                     mostrarCoches(Controller.obtenerCoches());
                     break;
