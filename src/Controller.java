@@ -13,7 +13,6 @@ public class Controller {
      * @param matricula
      * @return el objeto Coche
      */
-
     public static Coche crearCoche(String modelo, String matricula) {
         return Model.crearCoche(modelo, matricula);
     }
