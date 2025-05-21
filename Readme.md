@@ -78,7 +78,7 @@ sequenceDiagram
 
     Controller->>Model: cambiarVelocidad("BXK 1234", 150)
     activate Model
-    Model-->>Controller: 150
+    Model-->>Controller: Velocidad
     deactivate Model
 
     Controller->>+View: muestraVelocidad("BXK 1234", 150)
