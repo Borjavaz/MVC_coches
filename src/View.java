@@ -79,6 +79,7 @@ public class View {
                     // Llama al Controller para mostrar todos los coches
                     mostrarCoches(Controller.obtenerCoches());
                     break;
+
                 case "0":
                     return;
                 default:
