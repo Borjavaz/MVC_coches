@@ -69,3 +69,62 @@ sequenceDiagram
     View-->>Controller: boolean
     deactivate View
 ```
+
+Diagrama del programa finalizado
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant View
+    participant Controller
+    participant Model
+    participant Coche
+    
+    App->>View: Ejecuta menú principal
+    activate View
+    View->>Controller: Solicita crear coche
+    deactivate View
+    
+    activate Controller
+    Controller->>Model: Pide crear nuevo coche
+    deactivate Controller
+    
+    activate Model
+    Model->>Coche: Instancia nuevo coche
+    Coche-->>Model: Coche creado
+    Model-->>Controller: Confirmación creación
+    deactivate Model
+    
+    activate Controller
+    Controller->>Model: Solicita modificar velocidad
+    deactivate Controller
+    
+    activate Model
+    Model->>Coche: Actualiza velocidad
+    Coche-->>Model: Velocidad actualizada
+    Model-->>Controller: Confirmación velocidad
+    deactivate Model
+    
+    activate Controller
+    Controller->>View: Pide mostrar velocidad
+    deactivate Controller
+    
+    activate View
+    View->>View: Muestra velocidad en pantalla
+    View-->>Controller: Confirmación visualización
+    deactivate View
+    
+    Controller->>Model: Solicita aumentar velocidad
+    activate Model
+    Model->>Coche: Incrementa velocidad
+    Coche-->>Model: Velocidad aumentada
+    Model-->>Controller: Confirmación aumento
+    deactivate Model
+    
+    Controller->>Model: Solicita disminuir velocidad
+    activate Model
+    Model->>Coche: Reduce velocidad
+    Coche-->>Model: Velocidad disminuida
+    Model-->>Controller: Confirmación reducción
+    deactivate Model
+```
