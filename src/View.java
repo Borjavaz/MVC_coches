@@ -1,15 +1,29 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * La clase View gestiona la interacción con el usuario.
+ * Muestra información por pantalla, solicita datos y presenta un menú principal.
+ */
+
 public class View {
     static Scanner sc = new Scanner(System.in);
 
-    // Muestra la velocidad de un coche
+    /**
+     * Muestra por consola la matrícula y la velocidad de un coche.
+     *
+     * @param matricula la matrícula del coche
+     * @param v la velocidad actual del coche
+     */
     public static void muestraVelocidad(String matricula, Integer v) {
         System.out.println(matricula + ": " + v + " km/h");
     }
 
-    // Muestra todos los coches
+    /**
+     * Muestra todos los coches del sistema.
+     *
+     * @param coches lista de coches a mostrar
+     */
     public static void mostrarCoches(ArrayList<Coche> coches) {
         if (coches.isEmpty()) {
             System.out.println("No hay coches en el parking.");
@@ -28,13 +42,21 @@ public class View {
         System.out.println(mensaje);
     }
 
-    // Pide un dato al usuario
+    /**
+     * Solicita un dato al usuario y lo devuelve como cadena.
+     *
+     * @param mensaje el mensaje que se muestra para pedir el dato
+     * @return el dato introducido por el usuario
+     */
     public static String pedirDato(String mensaje) {
         System.out.print(mensaje);
         return sc.nextLine();
     }
 
-    // Menú principal de la aplicación
+    /**
+     * Muestra el menú principal de la aplicación y gestiona las opciones del usuario.
+     * Permite crear coches, cambiar la velocidad de un coche, mostrar todos los coches o salir.
+     */
     public static void menu() {
         while (true) {
             System.out.println("-----MENU-----");
