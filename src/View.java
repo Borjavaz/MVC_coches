@@ -15,6 +15,7 @@ public class View {
      * @param matricula la matrícula del coche
      * @param v la velocidad actual del coche
      */
+
     public static void muestraVelocidad(String matricula, Integer v) {
         System.out.println(matricula + ": " + v + " km/h");
     }
