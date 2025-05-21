@@ -27,7 +27,6 @@ public class Model {
         return aux;
     }
 
-
     public static Coche getCoche(String matricula){
         for (Coche e: parking) {
             if (e.matricula.equals(matricula)) {
