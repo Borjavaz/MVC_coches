@@ -7,7 +7,6 @@ public class Coche {
     String modelo;
     Integer velocidad;
 
-
     /**
      * @param modelo el modelo del coche
      * @param matricula la matrícula del coche
