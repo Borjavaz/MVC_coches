@@ -32,9 +32,9 @@ public class Coche {
      * @param gasolina declaramos esta nueva variable
      */
 
-    int gasolina;
+    double gasolina;
 
-    public void echarGasolina(int litros) {
+    public void echarGasolina(double litros) {
         this.gasolina += litros;
     }
 
