@@ -27,6 +27,20 @@ public class Controller {
     public static int cambiarVelocidad(String matricula, int velocidad) {
         return Model.cambiarVelocidad(matricula, velocidad);
     }
+    /**
+     * Cambia la velocidad de un coche según su matrícula.
+     * @param matricula la matrícula del coche que avanza
+     * @param tiempo el tiempo que tarda ese coche en avanzar
+     * @return lo que avanza el coche
+     */
+    public static int avanzarCoche(String matricula, int tiempo) {
+        Coche c = Model.getCoche(matricula);
+        if (c != null) {
+            return c.avanzarCoche(tiempo);
+        }
+        return -1;
+    }
+
 
     /**
      * Obtiene la lista de todos los coches registrados.
