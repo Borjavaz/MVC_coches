@@ -31,7 +31,6 @@ public class Controller {
      * Cambia la velocidad de un coche según su matrícula.
      * @param matricula la matrícula del coche que avanza
      * @param tiempo el tiempo que tarda ese coche en avanzar
-     * @return lo que avanza el coche
      */
     public static int avanzarCoche(String matricula, int tiempo) {
         Coche c = Model.getCoche(matricula);
@@ -41,6 +40,20 @@ public class Controller {
         return -1;
     }
 
+    /**
+     * Echar gasolina a un coche según su matrícula.
+     * @param matricula la matrícula del coche que quiere repostar
+     * @param litros litros de gasolina que se le echan al coche
+     */
+
+    public static boolean echarGasolina(String matricula, int litros) {
+        Coche c = Model.getCoche(matricula);
+        if (c != null) {
+            c.echarGasolina(litros);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Obtiene la lista de todos los coches registrados.
