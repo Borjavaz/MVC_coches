@@ -18,4 +18,7 @@ public class Coche {
         this.matricula = matricula;
         this.velocidad = 0;
     }
+    public int avanzar(int tiempo) {
+        return velocidad * tiempo; // distancia = velocidad * tiempo
+    }
 }
