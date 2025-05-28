@@ -104,6 +104,26 @@ public class View {
                     mostrarCoches(Controller.obtenerCoches());
                     break;
 
+                case "4":
+                    matricula = pedirDato("Introduce la matrícula del coche: ");
+                    String tiempoInput = pedirDato("Introduce el tiempo en horas: ");
+                    try {
+                        int tiempo = Integer.parseInt(tiempoInput);
+                        if (tiempo < 0) {
+                            mostrarMensaje("El tiempo no puede ser negativo.");
+                        } else {
+                            int distancia = Controller.avanzarCoche(matricula, tiempo);
+                            if (distancia != -1) {
+                                mostrarMensaje("El coche ha avanzado " + distancia + " km.");
+                            } else {
+                                mostrarMensaje("Coche no encontrado.");
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        mostrarMensaje("Tiempo no válido.");
+                    }
+                    break;
+
                 case "0":
                     return;
                 default:
