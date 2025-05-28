@@ -57,7 +57,7 @@ public class View {
 
     /**
      * Muestra el menú principal de la aplicación y gestiona las opciones del usuario.
-     * Permite crear coches, cambiar la velocidad de un coche, mostrar todos los coches o salir.
+     * Permite crear coches, cambiar la velocidad de un coche, mostrar todos los coches, avanzar un coche, echar gasolina o salir.
      */
     public static void menu() {
         while (true) {
@@ -65,6 +65,8 @@ public class View {
             System.out.println("1- Crear coche");
             System.out.println("2- Cambiar velocidad");
             System.out.println("3- Mostrar todos los coches");
+            System.out.println("4- Avanzar");
+            System.out.println("5- Echar gasolina");
             System.out.println("0 - Salir");
 
             String input = sc.nextLine();

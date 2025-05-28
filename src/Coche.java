@@ -18,6 +18,11 @@ public class Coche {
         this.matricula = matricula;
         this.velocidad = 0;
     }
+
+    /**
+     * @param tiempo el tiempo que tarda el coche
+     * La velocidad inicial del coche será 0.
+     */
     public int avanzarCoche(int tiempo) {
         return velocidad * tiempo; // distancia = velocidad * tiempo
     }
