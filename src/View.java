@@ -23,6 +23,7 @@ public class View {
         }
     }
 
+
     // Muestra un mensaje al usuario
     public static void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
