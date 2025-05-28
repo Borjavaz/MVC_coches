@@ -7,6 +7,7 @@ public class Coche {
     String modelo;
     Integer velocidad;
 
+
     /**
      * @param modelo el modelo del coche
      * @param matricula la matrícula del coche
@@ -21,9 +22,20 @@ public class Coche {
 
     /**
      * @param tiempo el tiempo que tarda el coche
-     * La velocidad inicial del coche será 0.
      */
     public int avanzarCoche(int tiempo) {
         return velocidad * tiempo; // distancia = velocidad * tiempo
     }
+
+    /**
+     * @param litros litros de gasolina que le echas al coche
+     * @param gasolina declaramos esta nueva variable
+     */
+
+    int gasolina;
+
+    public void echarGasolina(int litros) {
+        this.gasolina += litros;
+    }
+
 }
