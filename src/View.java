@@ -125,6 +125,27 @@ public class View {
                         mostrarMensaje("Tiempo no válido.");
                     }
                     break;
+                case "5":
+                    matricula = pedirDato("Introduce la matrícula del coche: ");
+                    String litrosInput = pedirDato("Introduce litros de gasolina: ");
+                    try {
+                        int litros = Integer.parseInt(litrosInput);
+                        if (litros < 0) {
+                            mostrarMensaje("Cantidad no válida.");
+                        } else {
+                            boolean ok = Controller.echarGasolina(matricula, litros);
+                            if (ok) {
+                                mostrarMensaje("Gasolina añadida correctamente.");
+                            } else {
+                                mostrarMensaje("Coche no encontrado.");
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        mostrarMensaje("Entrada no válida.");
+                    }
+                    break;
+
+
 
                 case "0":
                     return;
