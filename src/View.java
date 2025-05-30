@@ -31,12 +31,14 @@ public class View {
         } else {
             System.out.println("Coches en el parking:");
             for (Coche coche : coches) {
-                System.out.println("Matrícula: " + coche.matricula +
-                        " | Modelo: " + coche.modelo +
-                        " | Velocidad: " + coche.velocidad + " km/h");
+                System.out.println("Matrícula: " + coche.getMatricula() +
+                        " | Modelo: " + coche.getModelo() +
+                        " | Velocidad: " + coche.getVelocidad() + " km/h" +
+                        " | Gasolina: " + coche.getGasolina() + " L");
             }
         }
     }
+
 
 
     // Muestra un mensaje al usuario
@@ -114,26 +116,35 @@ public class View {
                         if (tiempo < 0) {
                             mostrarMensaje("El tiempo no puede ser negativo.");
                         } else {
+                            // Llamada al método avanzarCoche del Controller
                             int distancia = Controller.avanzarCoche(matricula, tiempo);
-                            if (distancia != -1) {
-                                mostrarMensaje("El coche ha avanzado " + distancia + " km.");
+
+                            // Si no se puede avanzar por falta de gasolina
+                            if (distancia == -1) {
+                                mostrarMensaje("No hay suficiente gasolina para avanzar.");
                             } else {
-                                mostrarMensaje("Coche no encontrado.");
+                                mostrarMensaje("El coche ha avanzado " + distancia + " km.");
                             }
                         }
                     } catch (NumberFormatException e) {
                         mostrarMensaje("Tiempo no válido.");
                     }
                     break;
+
+                /**
+                 * Opción 5 del menú: permite al usuario echar gasolina a un coche existente.
+                 * Solicita la matrícula del coche y la cantidad de litros a añadir.
+                 * Muestra un mensaje de éxito o error según si se encuentra el coche.
+                 */
                 case "5":
-                    matricula = pedirDato("Introduce la matrícula del coche: ");
+                    String matricula5 = pedirDato("Introduce la matrícula del coche: ");
                     String litrosInput = pedirDato("Introduce litros de gasolina: ");
                     try {
-                        int litros = Integer.parseInt(litrosInput);
+                        double litros = Double.parseDouble(litrosInput);
                         if (litros < 0) {
                             mostrarMensaje("Cantidad no válida.");
                         } else {
-                            boolean ok = Controller.echarGasolina(matricula, litros);
+                            boolean ok = Controller.echarGasolina(matricula5, litros);
                             if (ok) {
                                 mostrarMensaje("Gasolina añadida correctamente.");
                             } else {
@@ -144,8 +155,6 @@ public class View {
                         mostrarMensaje("Entrada no válida.");
                     }
                     break;
-
-
 
                 case "0":
                     return;

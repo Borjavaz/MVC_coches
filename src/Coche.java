@@ -1,41 +1,94 @@
-/**
- * @author Borja
- * Crea un nuevo coche con el modelo y la matrícula que introduzca el usuario.
- */
 public class Coche {
-    String matricula;
-    String modelo;
-    Integer velocidad;
-
+    private String matricula;
+    private String modelo;
+    private Integer velocidad;
+    private double gasolina;
 
     /**
+     * Constructor que inicializa un coche con el modelo, la matrícula y la velocidad inicial a 0.
+     * La gasolina inicial es 0.
+     *
      * @param modelo el modelo del coche
      * @param matricula la matrícula del coche
-     * La velocidad inicial del coche será 0.
      */
-
     public Coche(String modelo, String matricula) {
         this.modelo = modelo;
         this.matricula = matricula;
         this.velocidad = 0;
+        this.gasolina = 0;
     }
 
     /**
-     * @param tiempo el tiempo que tarda el coche
+     * Calcula la distancia que puede avanzar el coche con la gasolina disponible.
+     * Si el coche no tiene suficiente gasolina, no avanzará.
+     *
+     * @param tiempo el tiempo en horas que el coche avanza
+     * @return la distancia recorrida en km, o -1 si no hay suficiente gasolina
      */
     public int avanzarCoche(int tiempo) {
-        return velocidad * tiempo; // distancia = velocidad * tiempo
+        int distancia = velocidad * tiempo; // distancia = velocidad * tiempo
+        double consumo = distancia / 10.0; // Ejemplo: 10 km por litro de gasolina
+
+        // Comprobar si hay suficiente gasolina para avanzar
+        if (gasolina >= consumo) {
+            gasolina -= consumo; // Reducir la gasolina proporcionalmente
+            return distancia; // Retornar la distancia recorrida
+        } else {
+            return -1; // No hay gasolina suficiente
+        }
     }
 
     /**
-     * @param litros litros de gasolina que le echas al coche
-     * @param gasolina declaramos esta nueva variable
+     * Añade gasolina al coche.
+     *
+     * @param litros la cantidad de litros a añadir al coche
      */
-
-    double gasolina;
-
     public void echarGasolina(double litros) {
         this.gasolina += litros;
     }
 
+    /**
+     * Obtiene la cantidad de gasolina que queda en el coche.
+     *
+     * @return la cantidad de gasolina restante
+     */
+    public double obtenerGasolina() {
+        return gasolina;
+    }
+
+    // Getter y Setter para matricula
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    // Getter y Setter para modelo
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    // Getter y Setter para velocidad
+    public Integer getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(Integer velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    // Getter y Setter para gasolina
+    public double getGasolina() {
+        return gasolina;
+    }
+
+    public void setGasolina(double gasolina) {
+        this.gasolina = gasolina;
+    }
 }
