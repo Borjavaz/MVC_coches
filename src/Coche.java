@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Coche {
     private String matricula;
     private String modelo;
@@ -11,6 +13,31 @@ public class Coche {
      * @param modelo el modelo del coche
      * @param matricula la matrícula del coche
      */
+    private ArrayList<AlertaObserver> observadores = new ArrayList<>();
+
+    /**
+     * Añade un observador que será notificado si la gasolina baja de 10 litros.
+     *
+     * @param obs el observador a registrar
+     */
+
+    public void añadirObservador(AlertaObserver obs) {
+        observadores.add(obs);
+    }
+
+    /**
+     * Notifica a todos los observadores si la gasolina baja de 10 litros.
+     */
+
+    private void notificarAlerta() {
+        if (gasolina < 10) {
+            for (AlertaObserver obs : observadores) {
+                obs.actualizar("Alerta: Repostar");
+            }
+        }
+    }
+
+
     public Coche(String modelo, String matricula) {
         this.modelo = modelo;
         this.matricula = matricula;
@@ -31,7 +58,8 @@ public class Coche {
 
         // Comprobar si hay suficiente gasolina para avanzar
         if (gasolina >= consumo) {
-            gasolina -= consumo; // Reducir la gasolina proporcionalmente
+            gasolina -= consumo;// Reducir la gasolina proporcionalmente
+            notificarAlerta(); //Llamada al observer
             return distancia; // Retornar la distancia recorrida
         } else {
             return -1; // No hay gasolina suficiente
@@ -45,6 +73,7 @@ public class Coche {
      */
     public void echarGasolina(double litros) {
         this.gasolina += litros;
+        notificarAlerta();
     }
 
     /**
