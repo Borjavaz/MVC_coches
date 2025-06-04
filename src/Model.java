@@ -18,9 +18,11 @@ public class Model {
      */
 
     public static Coche crearCoche(String modelo, String matricula) {
-        Coche aux = new Coche(modelo, matricula);
-        parking.add(aux);
-        return aux;
+        Coche car = new Coche(modelo, matricula);
+        car.añadirObservador(new AlertaConsola());
+        parking.add(car);
+        return car;
+
     }
 
     public static Coche getCoche(String matricula) {
