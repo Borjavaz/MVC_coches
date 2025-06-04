@@ -155,7 +155,6 @@ public class View {
                         mostrarMensaje("Entrada no válida.");
                     }
                     break;
-
                 case "0":
                     return;
                 default:
