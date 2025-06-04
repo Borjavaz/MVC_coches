@@ -27,18 +27,37 @@ Este proyecto simula un parking de coches. Se han añadido dos nuevas funciones:
 
 ---
 
-##  Comprobación
+### Comprobación
 
 - Al echar gasolina, se actualiza correctamente.
 - Al avanzar, si hay gasolina suficiente, recorre la distancia y se descuenta el consumo.
 - Si no hay gasolina suficiente, no avanza y se muestra un mensaje.
 
 
+## Implementación del patrón Observer
+
+- Se crea una interfaz `AlertaObserver` con el método `actualizar(String mensaje)`.
+- La clase `AlertaConsola` implementa esta interfaz y muestra el mensaje por pantalla. ***En el mermaind es el observer***
+- La clase `Coche` registra observadores y los notifica cuando la gasolina cae por debajo de 10 litros.
+
+### Comprobación
+
+Lo que hacemos aquí es:
+1 -> `crear un coche`
+2 -> `ver los coches que hay en el parking`
+3 -> `modificar la velocidad a 100km/h`
 
 
+![coche1](https://github.com/user-attachments/assets/a94a48a3-8db7-4db1-b1e0-eb30636e88f7)
 
 
+A continuación: 
+1 -> `le ponemos 55 litros de gasolina al coche`
+2 -> `avanzamos 4 horas (400km), el coche se queda con 15 litros`
+3 -> `Vuelvo a avanzar 1 hora (100km), y me salta la alerta ya que me quedan menos de 10 litros`
 
+
+![coche3](https://github.com/user-attachments/assets/eeed3939-db28-4214-a634-5d2bf9d14781)
 
 
 
@@ -96,7 +115,7 @@ sequenceDiagram
     deactivate View
 ```
 
-Diagrama con los metodos y funciones de mi programa
+## Diagrama con los metodos y funciones de mi programa
 
 ```mermaid
 sequenceDiagram
@@ -141,4 +160,24 @@ sequenceDiagram
     View->>-View: System.out.println()
     View-->>Controller: boolean(Parking)
     deactivate View
+```
+## Diagrama de Secuencia con el observer
+
+```mermaid
+sequenceDiagram
+    
+    participant View
+    participant Controller
+    participant Model
+    participant Coche
+    participant Observer
+
+    View->>Controller: avanzarCoche(matrícula, tiempo)
+    Controller->>Model: getCoche(matrícula)
+    Model-->>Controller: devuelve Coche
+    Controller->>Coche: avanzarCoche(tiempo)
+    Coche->>Coche: calcula consumo y reduce gasolina
+    Coche->>Coche: notificarAlerta()
+    Coche->>AlertaConsola: actualizar("Alerta: Repostar")
+    Observer->>View: mostrarMensaje("Alerta: Repostar")
 ```
